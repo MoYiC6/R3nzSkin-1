@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include <cstdint>
 #include <map>
@@ -37,55 +37,55 @@ public:
 	std::vector<std::pair<std::uint32_t, const char*>> wards_skins;
 	
 	std::vector<const char*> minions_skins{
-		"Minion", "Summer Minion",
-		"Project Minion", "Snowdown Minion",
-		"Draven Minion", "Star Guardian Minion",
-		"Arcade Minion", "Snowdown 2 Minion",
-		"Odyssey Minion", "Mouse Minion", "Arcane Minion"
+		"小兵", "夏季小兵",
+		"攻城小兵", "冰雪节小兵",
+		"德莱文小兵", "星际卫士小兵",
+		"街机小兵", "冰雪节2小兵",
+		"奥德赛小兵", "鼠标小兵", "奥术小兵"
 	};
 
 	std::vector<const char*> turret_skins{
-		"Default Order Turret", "Default Chaos Turret",
-		"Snow Order Turret", "Snow Chaos Turret",
-		"Twisted Treeline Order Turret", "Twisted Treeline Chaos Turret",
-		"URF Order Turret", "URF Chaos Turret",
-		"Arcade Turret",
-		"Temple of Lily and Lotus Turret",
-		"Arcane Order Turret", "Arcane Chaos Turret",
-		"Butcher's Bridge Order Turret", "Butcher's Bridge Chaos Turret",
-		"Howling Abyss Order Turret", "Howling Abyss Chaos Turret"
+		"默认我方防御塔", "默认敌方防御塔",
+		"雪地 我方防御塔", "雪地 敌方防御塔",
+		"扭曲的丛林 我方防御塔", "扭曲的丛林 敌方防御塔",
+		"URF 我方防御塔", "URF 敌方防御塔",
+		"街机防御塔",
+		"灵魂莲华防御塔",
+		"奥术我方防御塔", "奥术敌方防御塔",
+		"屠宰码头我方防御塔", "屠宰码头敌方防御塔",
+		"嚎哭深渊我方防御塔", "嚎哭深渊敌方防御塔"
 	};
 
 	std::vector<jungle_mob_skin_info> jungle_mobs_skins{
 		{
-			"Baron",
+			"男爵",
 			{ FNV("SRU_Baron") },
-			{ "Baron", "Snowdown Baron", "Championship Baron", "Lunar Revel Baron", "MSI Baron", "Odyssey Baron", "Championship Birthday Baron", "Ruined King Baron" }
+			{ "男爵", "冰雪节男爵", "冠军赛男爵", "月球狂欢男爵", "MSI男爵", "奥德赛男爵", "锦标赛生日男爵", "残败的国王男爵" }
 		},
 		{
-			"Blue",
+			"蓝",
 			{ FNV("SRU_Blue") },
-			{ "Blue", "Dark Blue", "Pool Party Blue", "Ruined King Blue" }
+			{ "蓝", "深蓝", "泳池派对蓝", "破败的国王蓝" }
 		},
 		{
-			"Red",
+			"红",
 			{ FNV("SRU_Red") },
-			{ "Red", "Pool Party Red", "Ruined King Red" }
+			{ "红", "泳池派对红", "破败的国王红" }
 		},
 		{
-			"Scuttle",
+			"河蟹",
 			{ FNV("Sru_Crab") },
-			{ "Scuttle", "Halloween Light Scuttle", "Halloween Dark Scuttle", "Ruined King Scuttle" }
+			{ "河蟹", "万圣节河蟹", "万圣节黑暗 河蟹", "破败的国王 河蟹" }
 		},
 		{
-			"Krug",
+			"石甲虫",
 			{ FNV("SRU_Krug"), FNV("SRU_KrugMini"), FNV("SRU_KrugMiniMini") },
-			{ "Krug", "Dark Krug" }
+			{ "石甲虫", "黑暗石甲虫" }
 		},
 		{
-			"Razorbeak",
+			"剃刀鸟",
 			{ FNV("SRU_Razorbeak"), FNV("SRU_RazorbeakMini") },
-			{ "Razorbeak", "Chicken Razorbeak" }
+			{ "剃刀鸟", "小鸡剃刀鸟" }
 		}
 	};
 
