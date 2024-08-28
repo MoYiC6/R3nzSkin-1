@@ -95,9 +95,10 @@ void GUI::render() noexcept
 					ImGui::Text("玩家皮肤设置:");
 
 					if (ImGui::Combo("当前皮肤", &cheatManager.config->current_combo_skin_index, vector_getter_skin, static_cast<void*>(&values), values.size() + 1))
-						if (cheatManager.config->current_combo_skin_index > 0)
+						if (cheatManager.config->current_combo_skin_index > 0) {
 							player->change_skin(values[cheatManager.config->current_combo_skin_index - 1].model_name, values[cheatManager.config->current_combo_skin_index - 1].skin_id);
-
+							cheatManager.config->save();
+						}
 					const auto playerHash{ fnv::hash_runtime(player->get_character_data_stack()->base_skin.model.str) };
 					if (const auto it{ std::ranges::find_if(cheatManager.database->specialSkins,
 					[&skin = player->get_character_data_stack()->base_skin.skin, &ph = playerHash](const SkinDatabase::specialSkin& x) noexcept -> bool
@@ -165,8 +166,10 @@ void GUI::render() noexcept
 
 						auto& values{ cheatManager.database->champions_skins[champion_name_hash] };
 						if (ImGui::Combo(str_buffer, &fst->second, vector_getter_skin, static_cast<void*>(&values), values.size() + 1))
-							if (fst->second > 0)
+							if (fst->second > 0) {
 								hero->change_skin(values[fst->second - 1].model_name, values[fst->second - 1].skin_id);
+								cheatManager.config->save();
+							}
 					}
 					footer();
 					ImGui::EndTabItem();
@@ -228,6 +231,7 @@ void GUI::render() noexcept
 						if (const auto hero{ heroes->list[i] }; hero != player)
 							hero->change_skin(hero->get_character_data_stack()->base_skin.model.str, 0);
 					}
+					cheatManager.config->save();
 				} ImGui::hoverInfo("将除本人玩家以外的所有英雄的皮肤设置为默认皮肤。");
 
 				if (ImGui::Button("随机皮肤")) {
@@ -249,6 +253,7 @@ void GUI::render() noexcept
 							auto& data{ config[championHash] };
 							data = random(1ull, skinCount);
 							hero->change_skin(skinDatabase[data - 1].model_name, skinDatabase[data - 1].skin_id);
+							cheatManager.config->save();
 						}
 					}
 				} ImGui::hoverInfo("随机更改所有游戏的皮肤。");
