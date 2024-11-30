@@ -1,4 +1,4 @@
-	#pragma once
+#pragma once
 
 #include <cstdint>
 #include <intrin.h>
@@ -10,7 +10,7 @@ class xor_value {
 	T values_table[4];
 	bool xor_key_was_init{ 0 };
 	std::uint8_t bytes_xor_count;
-	std::uint8_t bytes_xor_count_8;	
+	std::uint8_t bytes_xor_count_8;
 	std::uint8_t value_index{ 0 };
 public:
 	T decrypt() noexcept

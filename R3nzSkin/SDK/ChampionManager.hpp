@@ -8,5 +8,5 @@
 
 class ChampionManager {
 	PAD(0x18)
-		RiotArray<Champion*> champions;
+	RiotArray<Champion*> champions;
 };

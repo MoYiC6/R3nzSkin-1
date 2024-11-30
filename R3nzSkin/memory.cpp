@@ -122,7 +122,7 @@ void Memory::Search(bool gameClient)
 					auto address{ find_signature(nullptr, pattern.c_str()) };
 
 					if (!address) {
-						::MessageBoxA(nullptr, ("δ�ҵ�ģʽ: " + pattern).c_str(), "R3nzSkin", MB_OK | MB_ICONWARNING);
+						::MessageBoxA(nullptr, ("Failed to find pattern: " + pattern).c_str(), "R3nzSkin", MB_OK | MB_ICONWARNING);
 						// cheatManager.logger->addLog("Not found: %s\n", pattern.c_str());
 						continue;
 					}

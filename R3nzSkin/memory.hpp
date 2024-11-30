@@ -37,7 +37,7 @@ public:
 	ManagerTemplate<AIMinionClient>* minionList;
 	ManagerTemplate<AITurret>* turretList;
 	ChampionManager* championManager;
-
+	
 	std::uintptr_t materialRegistry;
 	IDXGISwapChain* swapChain;
 
@@ -60,12 +60,12 @@ private:
 	{
 		{
 			{
-				"48 8B 1D ? ? ? ? 48 85 DB 74 15 48 81 C3"
+				"48 8B 3D ? ? ? ? 48 85 FF 74 15 48 81 C7"
 			}, true, false, true, 0, &offsets::global::Player
 		},
 		{
 			{
-				"48 8B 05 ? ? ? ? 48 8B 58 08 8B 40 10 48 8D 34 C3 48 3B DE 74 49"
+				"48 8B 05 ? ? ? ? 48 8B 58 08 8B 40 10 48 8D 34 C3 48 3B DE 74 52"
 			}, true, false, true, 0, &offsets::global::ManagerTemplate_AIHero_
 		},
 		{
@@ -115,7 +115,7 @@ private:
 		},
 		{
 			{
-				"E8 ? ? ? ? 8B 57 34"
+				"E8 ? ? ? ? 8B 57 34 45 33 C9"
 			}, true, false, false, 0, &offsets::functions::Riot__Renderer__MaterialRegistry__GetSingletonPtr
 		},
 		{

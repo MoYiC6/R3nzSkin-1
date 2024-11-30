@@ -4,20 +4,20 @@
 #include <ranges>
 #include <string>
 #include <utility>
+
 #include "CheatManager.hpp"
 #include "SkinDatabase.hpp"
 #include "fnv_hash.hpp"
 
 void SkinDatabase::load() noexcept
 {
-	int j = 0;
-	for (auto j{ 0 }; j < cheatManager.memory->championManager->champions.size; ++j) {
+	for (auto j{ 0 }; j < cheatManager.memory->championManager->champions.size;++j) {
 		const auto& champion = cheatManager.memory->championManager->champions.list[j];
 		std::vector<std::int32_t> skins_ids;
 		
-
 		for (auto i{ 0 }; i < champion->skins.size; ++i)
-		skins_ids.push_back(champion->skins.list[i].skin_id);
+			skins_ids.push_back(champion->skins.list[i].skin_id);
+		
 		std::ranges::sort(skins_ids);
 
 		std::map<std::string, std::int32_t> temp_skin_list;
