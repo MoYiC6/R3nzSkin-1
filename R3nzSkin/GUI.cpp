@@ -55,7 +55,7 @@ void GUI::render() noexcept
 
 	const auto player{ cheatManager.memory->localPlayer };
 	const auto heroes{ cheatManager.memory->heroList };
-	static const auto my_team{ player ? player->get_team() : 100 };
+	static const auto my_team{ player ? player->get_team() : 1 };
 	static int gear{ player ? player->get_character_data_stack()->base_skin.gear : 0 };
 
 	static const auto vector_getter_skin = [](void* vec, const std::int32_t idx, const char** out_text) noexcept {
@@ -182,10 +182,23 @@ void GUI::render() noexcept
 				if (ImGui::Combo("小兵皮肤:", &cheatManager.config->current_combo_minion_index, vector_getter_default, static_cast<void*>(&cheatManager.database->minions_skins), cheatManager.database->minions_skins.size() + 1))
 					cheatManager.config->current_minion_skin_index = cheatManager.config->current_combo_minion_index - 1;
 				ImGui::Separator();
+				
 				if (ImGui::Combo("友方防御塔皮肤:", &cheatManager.config->current_combo_order_turret_index, vector_getter_default, static_cast<void*>(&cheatManager.database->turret_skins), cheatManager.database->turret_skins.size() + 1))
-					changeTurretSkin(cheatManager.config->current_combo_order_turret_index - 1, 100);
+				{
+					if (cheatManager.config->current_combo_order_turret_index >= 17)
+						changeTurretSkin(cheatManager.config->current_combo_order_turret_index + 1, 1);
+					else
+						changeTurretSkin(cheatManager.config->current_combo_order_turret_index - 1, 1);
+				}
 				if (ImGui::Combo("敌方防御塔皮肤:", &cheatManager.config->current_combo_chaos_turret_index, vector_getter_default, static_cast<void*>(&cheatManager.database->turret_skins), cheatManager.database->turret_skins.size() + 1))
-					changeTurretSkin(cheatManager.config->current_combo_chaos_turret_index - 1, 200);
+				{
+					if (cheatManager.config->current_combo_order_turret_index >= 17)
+						changeTurretSkin(cheatManager.config->current_combo_order_turret_index + 1, 2);
+					else
+						changeTurretSkin(cheatManager.config->current_combo_order_turret_index - 1, 2);
+				}
+
+
 				ImGui::Separator();
 				ImGui::Text("野怪皮肤设置:");
 				for (auto& [name, name_hashes, skins] : cheatManager.database->jungle_mobs_skins) {
@@ -255,8 +268,9 @@ void GUI::render() noexcept
 							auto& data{ config[championHash] };
 							data = random(1ull, skinCount);
 							hero->change_skin(skinDatabase[data - 1].model_name, skinDatabase[data - 1].skin_id);
-							cheatManager.config->save();
+							
 						}
+						cheatManager.config->save();
 					}
 				} ImGui::hoverInfo("随机更改所有游戏的皮肤。");
 
