@@ -185,10 +185,10 @@ void GUI::render() noexcept
 				
 				if (ImGui::Combo("友方防御塔皮肤:", &cheatManager.config->current_combo_order_turret_index, vector_getter_default, static_cast<void*>(&cheatManager.database->turret_skins), cheatManager.database->turret_skins.size() + 1))
 				{
-					if (cheatManager.config->current_combo_order_turret_index >= 17)
-						changeTurretSkin(cheatManager.config->current_combo_order_turret_index + 1, 1);
+					if (cheatManager.config->current_combo_chaos_turret_index >= 17)
+						changeTurretSkin(cheatManager.config->current_combo_chaos_turret_index + 1, 2);
 					else
-						changeTurretSkin(cheatManager.config->current_combo_order_turret_index - 1, 1);
+						changeTurretSkin(cheatManager.config->current_combo_chaos_turret_index - 1, 2);
 				}
 				if (ImGui::Combo("敌方防御塔皮肤:", &cheatManager.config->current_combo_chaos_turret_index, vector_getter_default, static_cast<void*>(&cheatManager.database->turret_skins), cheatManager.database->turret_skins.size() + 1))
 				{
